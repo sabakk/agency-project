@@ -1,0 +1,21 @@
+.app_bar {
+  height: 6.5rem;
+}
+.toolbar {
+  justify-content: space-between;
+  padding: 0 4.7rem;
+  // height: 4.5rem;
+}
+.logo svg {
+  width: 13.5rem;
+  color: black;
+  display: flex;
+  align-items: center;
+}
+.menu > div ul {
+  display: flex;
+  justify-content: space-between;
+}
+.nav_item span {
+  white-space: nowrap;
+}

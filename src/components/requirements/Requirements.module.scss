@@ -1,0 +1,26 @@
+.requirements_bg {
+  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
+    url("../../resourses/imgs/bg-2.jpg");
+  background-position: center;
+  background-size: cover;
+  height: 96vh;
+}
+.requirements_img {
+  text-align: center;
+}
+.requirements_img img {
+  display: block;
+  width: 90%;
+  padding-left: 4rem;
+  height: auto;
+}
+.body_text {
+  font-family: "Source Sans Pro", sans-serif;
+  font-weight: 400;
+  font-size: 1.6rem;
+  line-height: 1.5;
+  margin-top: 2rem;
+  &:first-child {
+    margin-top: 4rem;
+  }
+}

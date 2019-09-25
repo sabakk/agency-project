@@ -1,22 +1,13 @@
-.App {
-  text-align: center;
+html {
+  font-size: 62.5%; /* 62.5% of 16px = 10px */
 }
 
-.App-logo {
-  height: 40vmin;
+.MuiDrawer-paper {
+  width: 50%;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #09d3ac;
-}
+/* .MuiTypography-body1 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+} */
