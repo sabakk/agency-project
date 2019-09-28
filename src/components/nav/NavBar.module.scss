@@ -1,21 +1,38 @@
-.app_bar {
-  height: 6.5rem;
-}
+@import "../../App.scss";
+
 .toolbar {
-  justify-content: space-between;
   padding: 0 4.7rem;
-  // height: 4.5rem;
+  min-height: 6.4rem;
 }
 .logo svg {
   width: 13.5rem;
-  color: black;
-  display: flex;
-  align-items: center;
 }
-.menu > div ul {
-  display: flex;
-  justify-content: space-between;
+.desktop_nav {
+  ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    margin: 0 5rem;
+    padding: 0;
+    li {
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 1.6rem;
+      white-space: nowrap;
+      margin: 0 2.8rem 0 0;
+      &:last-child {
+        margin-right: 0;
+      }
+      &:hover {
+        color: $orange;
+        cursor: pointer;
+      }
+      a.scroll {
+        color: $blue !important;
+      }
+    }
+  }
 }
-.nav_item span {
-  white-space: nowrap;
+
+.hamburger {
+  margin-left: auto;
 }

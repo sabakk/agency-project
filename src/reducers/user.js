@@ -1,7 +1,7 @@
 import { USER_GET, USER_ERROR, USER_LOADING } from "../actions/types";
 
 const initialState = {
-  avatar: null,
+  avatar: {},
   loading: false,
   error: {}
 };

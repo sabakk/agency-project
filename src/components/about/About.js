@@ -6,7 +6,7 @@ import styles from "./About.module.scss";
 
 const About = () => {
   return (
-    <Container className={styles.container}>
+    <Container>
       <Grid
         container
         direction="row"
@@ -23,10 +23,10 @@ const About = () => {
         </Grid>
         <Grid item xs={12} sm={8}>
           <div className={styles.text_wrapper}>
-            <Typography variant="h6" gutterBottom className={styles.title}>
+            <Typography variant="h3" gutterBottom className={styles.title}>
               I am cool frontend developer
             </Typography>
-            <Typography variant="h6" gutterBottom className={styles.text}>
+            <Typography variant="body1" gutterBottom className={styles.text}>
               When real users have a slow experience on mobile, they're much
               less likely to find what they are looking for or purchase from you
               in the future. For many sites this equates to a huge missed

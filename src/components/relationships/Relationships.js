@@ -32,7 +32,7 @@ const Relationships = () => {
           </div>
         </Grid>
         <Grid item xs={12} md={4}>
-          <div className={styles.inner_grid}>
+          <div className={`${styles.inner_grid} ${styles.inner_next_grid}`}>
             <Css />
             <Typography variant="h6" className={styles.title_text}>
               Css is my best frien

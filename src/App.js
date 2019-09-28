@@ -1,5 +1,5 @@
 import React from "react";
-import "./App.css";
+import "./App.scss";
 import { Element } from "react-scroll";
 
 import { StylesProvider } from "@material-ui/styles";
@@ -16,6 +16,7 @@ import Requirements from "./components/requirements/Requirements";
 import Users from "./components/users/Users";
 import SignUp from "./components/signup/SignUp";
 import Footer from "./components/footer/Footer";
+import Alert from "./components/HOC/Alert";
 
 import store from "./store";
 import { Provider } from "react-redux";
@@ -29,7 +30,10 @@ const theme = createMuiTheme({
       main: "#fff"
     },
     secondary: {
-      main: "#ed4811"
+      main: "#ef6c00"
+    },
+    textPrimary: {
+      main: "#fff"
     }
   },
   spacing: 12
@@ -49,6 +53,7 @@ function App() {
       <CssBaseline />
       <StylesProvider injectFirst>
         <MuiThemeProvider theme={theme}>
+          <Alert />
           <NavBar />
           <Header />
           <Element name="About me">
@@ -66,7 +71,6 @@ function App() {
           <Element name="Sign up">
             <SignUp />
           </Element>
-
           <Footer />
         </MuiThemeProvider>
       </StylesProvider>

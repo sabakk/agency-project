@@ -1,15 +1,31 @@
 import React from "react";
-import { Avatar, Typography } from "@material-ui/core";
+import { Avatar, Typography, Tooltip } from "@material-ui/core";
 
 import styles from "./User.module.scss";
 
 const User = ({ user: { photo, name, position, email, phone } }) => {
-  console.log(name);
   return (
     <div className={styles.container}>
-      <Avatar src={photo} />
+      <div className={styles.avatar}>
+        <Avatar src={photo} />
+      </div>
+
       <div className={styles.wrapper}>
-        <Typography>{name}</Typography>
+        <Typography variant="h6" className={styles.name}>
+          {name}
+        </Typography>
+        <Typography variant="body1" className={styles.info}>
+          {position}
+        </Typography>
+        <Tooltip title={email}>
+          <Typography variant="body1" className={styles.info} noWrap>
+            {email}
+          </Typography>
+        </Tooltip>
+
+        <Typography variant="body1" className={styles.info}>
+          {phone}
+        </Typography>
       </div>
     </div>
   );

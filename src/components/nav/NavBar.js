@@ -1,27 +1,23 @@
 import React, { useEffect } from "react";
-import { scroller } from "react-scroll";
+import { scroller, Link } from "react-scroll";
 import { useDispatch, useSelector } from "react-redux";
 import { getUser } from "../../actions/userAction";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
-import IconButton from "@material-ui/core/IconButton";
-import MenuIcon from "@material-ui/icons/Menu";
 import Hidden from "@material-ui/core/Hidden";
 import Drawer from "@material-ui/core/Drawer";
-import List from "@material-ui/core/List";
 import Divider from "@material-ui/core/Divider";
-import ListItem from "@material-ui/core/ListItem";
-import ListItemText from "@material-ui/core/ListItemText";
-import Container from "@material-ui/core/Container";
+import { Container, Grid } from "@material-ui/core";
 
 import UserAvatar from "../HOC/UserAvatar";
 import { ReactComponent as Logo } from "../../resourses/logo/logo.svg";
+import { ReactComponent as Hamburger } from "../../resourses/icons/line-menu.svg";
 import styles from "./NavBar.module.scss";
 
 const NavBar = props => {
   const dispatch = useDispatch();
-  const user1 = useSelector(state => state.user.avatar);
+  const avatar = useSelector(state => state.user.avatar);
   useEffect(() => {
     dispatch(getUser());
   }, [dispatch]);
@@ -56,20 +52,28 @@ const NavBar = props => {
 
   const sideList = side => (
     <div
-      className=""
       role="presentation"
       onClick={toggleDrawer(side, false)}
       onKeyDown={toggleDrawer(side, false)}
     >
-      <List>
+      <ul>
         {["About me", "Relationships", "Requirements", "Users", "Sign up"].map(
           (text, index) => (
-            <ListItem button key={text} onClick={() => scrollToElement(text)}>
-              <ListItemText primary={text} className={styles.nav_item} />
-            </ListItem>
+            <li key={text} onClick={() => scrollToElement(text)}>
+              <Link
+                activeClass={styles.scroll}
+                to={text}
+                spy={true}
+                smooth={true}
+                offset={-65}
+                duration={500}
+              >
+                {text}
+              </Link>
+            </li>
           )
         )}
-      </List>
+      </ul>
     </div>
   );
 
@@ -78,25 +82,33 @@ const NavBar = props => {
       <Container>
         <AppBar position="fixed" className={styles.app_bar}>
           <Toolbar className={styles.toolbar}>
-            <div className={styles.logo}>
-              <Logo />
-            </div>
-            <Hidden smDown>
-              <div className={styles.menu}>{sideList()}</div>
-              <UserAvatar user1={user1} />
-            </Hidden>
+            <Grid
+              container
+              direction="row"
+              justify="space-between"
+              alignItems="center"
+            >
+              <Grid item xs={6} md={2}>
+                <div className={styles.logo}>
+                  <Logo />
+                </div>
+              </Grid>
+              <Hidden smDown>
+                <Grid item md={7}>
+                  <div className={styles.desktop_nav}>{sideList()}</div>
+                </Grid>
+                <Grid item md={3}>
+                  <UserAvatar avatar={avatar} />
+                </Grid>
+              </Hidden>
 
-            <Hidden mdUp>
-              <IconButton
-                edge="start"
-                className=""
-                color="inherit"
-                aria-label="Menu"
-                onClick={toggleDrawer("left", true)}
-              >
-                <MenuIcon />
-              </IconButton>
-            </Hidden>
+              <Hidden mdUp>
+                <Hamburger
+                  onClick={toggleDrawer("left", true)}
+                  className={styles.hamburger}
+                />
+              </Hidden>
+            </Grid>
           </Toolbar>
         </AppBar>
       </Container>
@@ -106,9 +118,9 @@ const NavBar = props => {
         open={state.left}
         onClose={toggleDrawer("left", false)}
       >
-        <UserAvatar user1={user1} />
+        <UserAvatar avatar={avatar} />
         <Divider />
-        {sideList("left")}
+        <div className={styles.mobile_nav}>{sideList("left")}</div>
       </Drawer>
     </nav>
   );

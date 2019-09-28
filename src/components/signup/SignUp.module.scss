@@ -1,13 +1,12 @@
 .subheader {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.8rem;
-  margin-top: 2rem;
+  margin: 1rem 0 6rem 0;
 }
 
-// .select {
-//   width: 80%;
-//   margin: 1rem;
-// }
+.select {
+  margin-top: 1.8rem;
+}
 .file_hide {
   opacity: 0;
   position: absolute;
@@ -17,22 +16,47 @@
 }
 .file_wrapper {
   width: 100%;
+  height: 5.6rem;
   display: flex;
   align-items: stretch;
   cursor: pointer;
+  margin-top: 1.8rem;
 
   .file_name {
-    flex: 1 1 75%;
+    flex: 1 1 72%;
     height: auto;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;
-    border: 0.2rem solid #000;
+    border: 0.1rem solid rgba(0, 0, 0, 0.23);
     border-radius: 0.4rem 0 0 0.4rem;
-    padding: 18.5px 14px;
+    padding-left: 14px;
+    display: flex;
+    align-items: center;
     font: inherit;
+    .placeholder {
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 1.6rem;
+      color: rgba(0, 0, 0, 0.63);
+    }
   }
   .file_upload {
-    flex: 1 1 25%;
+    flex: 1 1 28%;
+    border-radius: 0 0.4rem 0.4rem 0;
+  }
+}
+
+.upload_text {
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 1.2rem;
+  color: rgba(0, 0, 0, 0.63);
+  margin: 1rem 0 0 2rem;
+}
+
+.btn {
+  padding: 1rem 0 14rem 0;
+  & button {
+    display: block;
+    margin: auto;
   }
 }

@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPositions } from "../../actions/positionsAction";
 import { Formik, Form, Field, ErrorMessage } from "formik";
@@ -28,23 +28,26 @@ const SignUp = () => {
   };
 
   const formPositions = positions
-    ? positions.map((position, index) => (
+    ? positions.map(position => (
         <MenuItem key={position.id} value={position.name}>
           {position.name}
         </MenuItem>
       ))
     : null;
+  const [spacing, setSpacing] = useState(2);
 
   return (
     <Container>
       <Title>Register to get a work</Title>
       <Typography variant="h6" align="center" className={styles.subheader}>
         Attention! After successful registration and alert, update the list of
-        users in the block from the top{" "}
+        users in the block from the top
       </Typography>
       <Formik
         initialValues={{
+          name: "",
           email: "",
+          phone: "",
           positions: "",
           firstName: "",
           file: ""
@@ -66,17 +69,18 @@ const SignUp = () => {
             <Grid
               container
               direction="row"
-              justify="flex-end"
-              alignItems="center"
+              justify="space-between"
+              alignItems="flex-start"
+              spacing={spacing}
             >
               <Grid item xs={12} sm={4}>
                 <Field
-                  name="email"
-                  label="Email"
+                  name="name"
+                  label="Name"
+                  placeholder="Your name"
                   type="text"
                   component={TextField}
                   variant="outlined"
-                  // margin="normal"
                   fullWidth
                   InputLabelProps={{
                     shrink: true
@@ -88,21 +92,27 @@ const SignUp = () => {
                   name="email"
                   label="Email"
                   type="email"
+                  placeholder="Your email"
                   component={TextField}
                   variant="outlined"
-                  // margin="normal"
                   fullWidth
+                  InputLabelProps={{
+                    shrink: true
+                  }}
                 />
               </Grid>
               <Grid item xs={12} sm={4}>
                 <Field
                   name="email"
-                  label="Email"
-                  type="email"
+                  label="Phone"
+                  placeholder="+38 (___) ___ __ __"
+                  type="phone"
                   variant="outlined"
                   component={TextField}
-                  // margin="dense"
                   fullWidth
+                  InputLabelProps={{
+                    shrink: true
+                  }}
                 />
               </Grid>
 
@@ -110,10 +120,9 @@ const SignUp = () => {
                 <Field
                   select
                   name="positions"
-                  label="positions"
+                  label="Delect your position"
                   type="text"
                   component={TextField}
-                  margin="normal"
                   fullWidth
                   variant="outlined"
                   className={styles.select}
@@ -123,15 +132,10 @@ const SignUp = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <input
-                  // component={SimpleFileUpload}
-                  // component={ImageUpload}
                   name="file"
                   type="file"
                   id="contained-button-file"
                   className={styles.file_hide}
-                  // onChange={event => {
-                  //   setFieldValue("file", event.currentTarget.files[0]);
-                  // }}
                   onChange={event => fileUpload(event, setFieldValue)}
                 />
 
@@ -141,15 +145,20 @@ const SignUp = () => {
                 >
                   <div
                     variant="outlined"
-                    // size="large"
                     component="span"
                     className={styles.file_name}
                   >
-                    {values.file.name ? values.file.name : "Upload"}
+                    {values.file.name ? (
+                      <div className={styles.placeholder}>values.file.name</div>
+                    ) : (
+                      <div className={styles.placeholder}>
+                        Upload your photo
+                      </div>
+                    )}
                   </div>
                   <Button
+                    color="secondary"
                     variant="outlined"
-                    // size="large"
                     component="span"
                     className={styles.file_upload}
                   >
@@ -157,11 +166,16 @@ const SignUp = () => {
                   </Button>
                 </label>
                 {/* {values.file.size > 1000 ? <div>"fuck"</div> : null} */}
+                <Typography variant="caption" className={styles.upload_text}>
+                  File format jpg up to 5 MB, the minimum size of 70x70px
+                </Typography>
               </Grid>
               <Grid item xs={12}>
-                <Button variant="contained" color="primary" type="submit">
-                  Sign Up
-                </Button>
+                <div className={styles.btn}>
+                  <Button variant="contained" color="secondary" type="submit">
+                    Sign Up
+                  </Button>
+                </div>
               </Grid>
             </Grid>
           </Form>

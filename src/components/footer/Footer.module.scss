@@ -1,16 +1,30 @@
+@import "../../App.scss";
+
 .footer_bg {
   background-color: blue;
 }
 .footer_logo {
-  width: 13.8rem;
-  height: 2.5rem;
+  width: 13.3rem;
+  height: 2.4rem;
+  cursor: pointer;
+  path {
+    fill: #fff !important;
+  }
 }
+
+// svg path {
+//   fill: #fff !important;
+//   &:hover {
+//     fill: $orange !important;
+//   }
+// }
 .container {
   width: 100%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
   padding: 3rem 4.7rem;
+  color: white;
 }
 .footer_container {
   display: flex;
@@ -25,19 +39,26 @@
   display: flex;
   justify-content: flex-end;
   text-align: center;
-  margin-top: 2.5rem;
+  margin-top: 0.5rem;
   .caption {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 1.2rem;
     margin-right: auto;
   }
   .social {
-    margin-left: 2rem;
+    margin-left: 2.5rem;
+  }
+  a:hover path {
+    fill: $orange !important;
   }
 }
 .navigation {
   font-family: "PT Sans", sans-serif;
   font-size: 1.6rem;
+  &:hover {
+    color: $orange;
+    cursor: pointer;
+  }
 }
 
 @media only screen and (min-width: 600px) {
@@ -50,12 +71,17 @@
     display: flex;
     flex-wrap: wrap;
     justify-content: space-between;
-    flex: 0 0 60%;
+    flex: 0 0 70%;
+    margin-top: -1.5rem;
     .directions {
       flex: 0 0 25%;
-      margin-bottom: 1.5rem;
+      padding-bottom: 0.6rem;
       font-family: "PT Sans", sans-serif;
       font-size: 1.6rem;
+      &:hover {
+        color: $orange;
+        cursor: pointer;
+      }
     }
   }
   .divider {
@@ -63,6 +89,13 @@
   }
   .contacts_wrapper {
     position: relative;
+    &:hover {
+      color: $orange;
+      cursor: pointer;
+      .icons path {
+        fill: $orange !important;
+      }
+    }
     .icons {
       position: absolute;
       margin-top: 0.8rem;
@@ -70,10 +103,9 @@
     .contacts {
       font-family: "Source Sans Pro", sans-serif;
       font-size: 2rem;
-      margin: 0 0 2.5rem 3.5rem;
+      margin: 0 0 2rem 3.5rem;
     }
   }
-
   .navigation {
     margin-left: 3rem;
   }

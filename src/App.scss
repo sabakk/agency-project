@@ -1,0 +1,28 @@
+$grey-text: #4c4b4b;
+$orange: #ef6c00;
+$orange-hover: #fc831f;
+$error-red: #f44437;
+$blue: #283593;
+
+html {
+  font-size: 62.5%; /* 62.5% of 16px = 10px */
+}
+
+.MuiDrawer-paper {
+  width: 50%;
+}
+.MuiButton-root {
+  text-transform: capitalize;
+  font-family: "Source Sans Pro", sans-serif;
+  font-size: 20px;
+  line-height: 2;
+  font-weight: bold;
+  width: 290px;
+  padding: 0;
+}
+
+/* .MuiTypography-body1 {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  overflow: hidden;
+} */

@@ -7,7 +7,7 @@ import styles from "./Requirements.module.scss";
 
 const Requirements = () => {
   return (
-    <div className={styles.requirements_bg}>
+    <section className={styles.requirements_bg}>
       <Container>
         <Grid
           container
@@ -16,7 +16,7 @@ const Requirements = () => {
           alignItems="center"
         >
           <Grid item xs={12}>
-            <Title>General requirements for the test task</Title>
+            <Title white>General requirements for the test task</Title>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="body1" className={styles.body_text}>
@@ -49,7 +49,7 @@ const Requirements = () => {
           </Grid>
         </Grid>
       </Container>
-    </div>
+    </section>
   );
 };
 

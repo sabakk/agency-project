@@ -3,18 +3,21 @@
 }
 .about_img img {
   display: block;
-  max-width: 90%;
+  max-width: 100%;
   height: auto;
+}
+.text_wrapper {
+  padding-left: 2rem;
 }
 .title {
   font-family: "Overpass", sans-serif;
   font-size: 2.6rem;
-  padding-top: 4.5rem;
+  padding-top: 5rem;
 }
 .text {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.6rem;
-  line-height: 1.35;
+  line-height: 1.4;
 }
 .button {
   font-family: "Source Sans Pro", sans-serif;
@@ -22,4 +25,6 @@
   font-size: 2.2rem;
   text-transform: capitalize;
   color: #ef6c00;
+  margin-top: 1rem;
+  width: 8rem;
 }
