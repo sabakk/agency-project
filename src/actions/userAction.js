@@ -5,15 +5,13 @@ import {
   USER_LOADING,
   USERS_GET,
   USERS_ERROR,
-  USERS_LOADING
+  USERS_LOADING,
+  LOGOUT
 } from "../actions/types";
 
 axios.defaults.baseURL =
   "https://frontend-test-assignment-api.abz.agency/api/v1/";
-axios.interceptors.response.use(
-  res => res.data
-  // err => Promise.reject(err.response)
-);
+axios.interceptors.response.use(res => res.data);
 
 export const getUser = () => async dispatch => {
   dispatch({
@@ -50,4 +48,8 @@ export const getUsers = page => async dispatch => {
       payload: err
     });
   }
+};
+
+export const logout = () => dispatch => {
+  dispatch({ type: LOGOUT });
 };

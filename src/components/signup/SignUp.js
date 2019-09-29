@@ -1,8 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getPositions } from "../../actions/positionsAction";
-import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as Yup from "yup";
+import { register } from "../../actions/registerAction";
+
+import { Formik, Form, Field } from "formik";
+import validation from "./validation";
 import Title from "../HOC/Title";
 import { TextField } from "formik-material-ui";
 import MenuItem from "@material-ui/core/MenuItem";
@@ -20,21 +22,21 @@ const SignUp = () => {
   }, [dispatch]);
 
   const fileUpload = (event, setFieldValue) => {
-    const file = event.target.files[0];
-    if (!file) {
+    const photo = event.target.files[0];
+    if (!photo) {
       return;
     }
-    setFieldValue("file", file);
+    setFieldValue("photo", photo);
   };
 
   const formPositions = positions
     ? positions.map(position => (
-        <MenuItem key={position.id} value={position.name}>
+        <MenuItem key={position.id} value={position.id}>
           {position.name}
         </MenuItem>
       ))
-    : null;
-  const [spacing, setSpacing] = useState(2);
+    : "Data loading";
+  const [spacing] = useState(2);
 
   return (
     <Container>
@@ -48,24 +50,31 @@ const SignUp = () => {
           name: "",
           email: "",
           phone: "",
-          positions: "",
-          firstName: "",
-          file: ""
+          position_id: "",
+          photo: {}
         }}
-        onSubmit={(values, actions) => {
-          console.log({
-            fileName: values.file.name,
-            type: values.file.type,
-            size: `${values.file.size} bytes`
-          });
-          setTimeout(() => {
-            alert(JSON.stringify(values, null, 2));
-            actions.setSubmitting(false);
-          }, 1000);
+        validationSchema={validation}
+        onSubmit={(values, { resetForm }) => {
+          let FormFied = new FormData();
+          FormFied.append("name", values.name);
+          FormFied.append("email", values.email);
+          FormFied.append("phone", values.phone);
+          FormFied.append("position_id", values.position_id);
+          FormFied.append("photo", values.photo);
+
+          dispatch(register(FormFied));
+          resetForm();
         }}
       >
-        {({ setFieldValue, values }) => (
-          <Form>
+        {({
+          setFieldValue,
+          values,
+          errors,
+          touched,
+          handleSubmit,
+          isSubmitting
+        }) => (
+          <Form onSubmit={handleSubmit}>
             <Grid
               container
               direction="row"
@@ -86,6 +95,7 @@ const SignUp = () => {
                     shrink: true
                   }}
                 />
+                {/* {errors.name && touched.name ? <div>{errors.name}</div> : null} */}
               </Grid>
               <Grid item xs={12} sm={4}>
                 <Field
@@ -103,7 +113,7 @@ const SignUp = () => {
               </Grid>
               <Grid item xs={12} sm={4}>
                 <Field
-                  name="email"
+                  name="phone"
                   label="Phone"
                   placeholder="+38 (___) ___ __ __"
                   type="phone"
@@ -119,8 +129,8 @@ const SignUp = () => {
               <Grid item xs={12} sm={6}>
                 <Field
                   select
-                  name="positions"
-                  label="Delect your position"
+                  name="position_id"
+                  label="Select your position"
                   type="text"
                   component={TextField}
                   fullWidth
@@ -132,7 +142,7 @@ const SignUp = () => {
               </Grid>
               <Grid item xs={12} sm={6}>
                 <input
-                  name="file"
+                  name="photo"
                   type="file"
                   id="contained-button-file"
                   className={styles.file_hide}
@@ -148,8 +158,10 @@ const SignUp = () => {
                     component="span"
                     className={styles.file_name}
                   >
-                    {values.file.name ? (
-                      <div className={styles.placeholder}>values.file.name</div>
+                    {values.photo.name ? (
+                      <div className={styles.placeholder}>
+                        {values.photo.name}
+                      </div>
                     ) : (
                       <div className={styles.placeholder}>
                         Upload your photo
@@ -165,14 +177,27 @@ const SignUp = () => {
                     Upload
                   </Button>
                 </label>
-                {/* {values.file.size > 1000 ? <div>"fuck"</div> : null} */}
-                <Typography variant="caption" className={styles.upload_text}>
-                  File format jpg up to 5 MB, the minimum size of 70x70px
-                </Typography>
+                {touched.photo && errors.photo ? (
+                  <Typography
+                    variant="caption"
+                    className={styles.upload_text_error}
+                  >
+                    File format jpg up to 5 MB, the minimum size of 70x70px
+                  </Typography>
+                ) : (
+                  <Typography variant="caption" className={styles.upload_text}>
+                    File format jpg up to 5 MB, the minimum size of 70x70px
+                  </Typography>
+                )}
               </Grid>
               <Grid item xs={12}>
                 <div className={styles.btn}>
-                  <Button variant="contained" color="secondary" type="submit">
+                  <Button
+                    variant="contained"
+                    color="secondary"
+                    type="submit"
+                    disabled={isSubmitting}
+                  >
                     Sign Up
                   </Button>
                 </div>

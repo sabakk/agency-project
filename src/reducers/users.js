@@ -1,4 +1,9 @@
-import { USERS_GET, USERS_ERROR, USERS_LOADING } from "../actions/types";
+import {
+  USERS_GET,
+  USERS_ERROR,
+  USERS_LOADING,
+  USERS_CLEAR
+} from "../actions/types";
 
 const initialState = {
   users: [],
@@ -24,6 +29,13 @@ const users = (state = initialState, action) => {
     case USERS_LOADING:
       return {
         ...state,
+        loading: true
+      };
+    case USERS_CLEAR:
+      return {
+        ...state,
+        users: [],
+        error: {},
         loading: true
       };
     default:

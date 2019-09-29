@@ -1,7 +1,8 @@
 import React, { useEffect } from "react";
 import { scroller, Link } from "react-scroll";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import { getUser } from "../../actions/userAction";
+import { getToken } from "../../actions/tokenAction";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -17,9 +18,9 @@ import styles from "./NavBar.module.scss";
 
 const NavBar = props => {
   const dispatch = useDispatch();
-  const avatar = useSelector(state => state.user.avatar);
   useEffect(() => {
     dispatch(getUser());
+    dispatch(getToken());
   }, [dispatch]);
 
   const [state, setState] = React.useState({
@@ -98,7 +99,7 @@ const NavBar = props => {
                   <div className={styles.desktop_nav}>{sideList()}</div>
                 </Grid>
                 <Grid item md={3}>
-                  <UserAvatar avatar={avatar} />
+                  <UserAvatar />
                 </Grid>
               </Hidden>
 
@@ -118,7 +119,7 @@ const NavBar = props => {
         open={state.left}
         onClose={toggleDrawer("left", false)}
       >
-        <UserAvatar avatar={avatar} />
+        <UserAvatar />
         <Divider />
         <div className={styles.mobile_nav}>{sideList("left")}</div>
       </Drawer>

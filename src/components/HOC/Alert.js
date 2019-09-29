@@ -3,6 +3,8 @@ import { makeStyles } from "@material-ui/core/styles";
 import Modal from "@material-ui/core/Modal";
 import Backdrop from "@material-ui/core/Backdrop";
 import Fade from "@material-ui/core/Fade";
+import { removeAlert } from "../../actions/alertAction";
+import { useDispatch, useSelector } from "react-redux";
 
 const useStyles = makeStyles(theme => ({
   modal: {
@@ -20,15 +22,8 @@ const useStyles = makeStyles(theme => ({
 
 const Alert = () => {
   const classes = useStyles();
-  const [open, setOpen] = React.useState(false);
-
-  const handleOpen = () => {
-    setOpen(true);
-  };
-
-  const handleClose = () => {
-    setOpen(false);
-  };
+  const dispatch = useDispatch();
+  const open = useSelector(state => state.alert.open);
 
   return (
     <div>
@@ -37,7 +32,7 @@ const Alert = () => {
         aria-describedby="transition-modal-description"
         className={classes.modal}
         open={open}
-        onClose={handleClose}
+        onClose={() => dispatch(removeAlert())}
         closeAfterTransition
         BackdropComponent={Backdrop}
         BackdropProps={{
@@ -50,7 +45,7 @@ const Alert = () => {
             <p id="transition-modal-description">
               You have successfully passed the registration.
             </p>
-            <div onClick={handleClose}>OK</div>
+            <div onClick={() => dispatch(removeAlert())}>OK</div>
           </div>
         </Fade>
       </Modal>
