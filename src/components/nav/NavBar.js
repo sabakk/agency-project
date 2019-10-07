@@ -80,9 +80,9 @@ const NavBar = props => {
 
   return (
     <nav>
-      <Container>
-        <AppBar position="fixed" className={styles.app_bar}>
-          <Toolbar className={styles.toolbar}>
+      <AppBar position="fixed" className={styles.app_bar}>
+        <Toolbar className={styles.toolbar}>
+          <Container>
             <Grid
               container
               direction="row"
@@ -110,16 +110,16 @@ const NavBar = props => {
                 />
               </Hidden>
             </Grid>
-          </Toolbar>
-        </AppBar>
-      </Container>
+          </Container>
+        </Toolbar>
+      </AppBar>
 
       <Drawer
         anchor="left"
         open={state.left}
         onClose={toggleDrawer("left", false)}
       >
-        <UserAvatar />
+        <UserAvatar className={styles.mobile_avatar} />
         <Divider />
         <div className={styles.mobile_nav}>{sideList("left")}</div>
       </Drawer>

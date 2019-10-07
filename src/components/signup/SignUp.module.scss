@@ -4,10 +4,22 @@
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.8rem;
   margin: 1rem 0 6rem 0;
+  @include tablet {
+    width: 55%;
+    margin: 2.5rem auto 4rem auto;
+  }
+  @include mobile {
+    font-size: 1.6rem;
+    line-height: 1.4;
+    width: 100%;
+    margin: 1rem auto;
+  }
 }
-
-.select {
-  margin-top: 1.8rem;
+.field {
+  min-height: 10rem;
+  @include mobile {
+    min-height: 9rem;
+  }
 }
 .file_hide {
   opacity: 0;
@@ -22,8 +34,7 @@
   display: flex;
   align-items: stretch;
   cursor: pointer;
-  margin-top: 1.8rem;
-
+  // margin-top: 1.8rem;
   .file_name {
     flex: 1 1 72%;
     height: auto;
@@ -35,7 +46,22 @@
     padding-left: 14px;
     display: flex;
     align-items: center;
-    font: inherit;
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 1.6rem;
+    &_error {
+      flex: 1 1 72%;
+      height: auto;
+      overflow: hidden;
+      white-space: nowrap;
+      text-overflow: ellipsis;
+      border-radius: 0.4rem 0 0 0.4rem;
+      padding-left: 14px;
+      display: flex;
+      align-items: center;
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 1.6rem;
+      border: 0.1rem solid $error-red;
+    }
     .placeholder {
       font-family: "Source Sans Pro", sans-serif;
       font-size: 1.6rem;
@@ -45,26 +71,35 @@
   .file_upload {
     flex: 1 1 28%;
     border-radius: 0 0.4rem 0.4rem 0;
+    @include mobile {
+      flex: 0 0 5rem;
+    }
   }
 }
 
 .upload_text {
   font-family: "Source Sans Pro", sans-serif;
-  font-size: 1.2rem;
+  font-size: 1.3rem;
   color: rgba(0, 0, 0, 0.63);
   margin: 1rem 0 0 2rem;
   &_error {
     font-family: "Source Sans Pro", sans-serif;
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     color: $error-red;
     margin: 1rem 0 0 2rem;
   }
 }
 
-.btn {
+.btn_block {
   padding: 1rem 0 14rem 0;
-  & button {
+  .btn {
     display: block;
     margin: auto;
+  }
+  @include tablet {
+    padding-bottom: 13rem;
+  }
+  @include mobile {
+    padding: 0 0 7rem 0;
   }
 }

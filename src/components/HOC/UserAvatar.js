@@ -12,9 +12,11 @@ const UserAvatar = () => {
   return (
     <div className={styles.wrapper}>
       <div className={styles.text}>
-        <Typography variant="h6" gutterBottom className={styles.name}>
-          {avatar.name && avatar.name}
-        </Typography>
+        <Tooltip title={avatar.name || "name"}>
+          <Typography variant="h6" noWrap gutterBottom className={styles.name}>
+            {avatar.name && avatar.name}
+          </Typography>
+        </Tooltip>
         <Tooltip title={avatar.email || "email"}>
           <Typography
             variant="subtitle1"
@@ -33,11 +35,9 @@ const UserAvatar = () => {
           className={styles.avatar}
         />
       ) : null}
-      {avatar.name ? (
-        <div>
-          <Out onClick={() => dispatch(logout())} />
-        </div>
-      ) : null}
+      <div className={avatar.name ? styles.logout : styles.logout_disable}>
+        <Out onClick={() => dispatch(logout())} />
+      </div>
     </div>
   );
 };

@@ -1,4 +1,5 @@
 import { combineReducers } from "redux";
+import { reducer as formReducer } from "redux-form";
 import user from "./user";
 import users from "./users";
 import positions from "./positions";
@@ -8,6 +9,7 @@ const rootReducer = combineReducers({
   user,
   users,
   positions,
-  alert
+  alert,
+  form: formReducer
 });
 export default rootReducer;

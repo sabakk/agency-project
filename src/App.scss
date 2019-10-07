@@ -1,16 +1,40 @@
+html {
+  font-size: 62.5%; /* 62.5% of 16px = 10px */
+}
+#root {
+  max-width: 2560px;
+  margin: 0 auto;
+}
+
+// variable
 $grey-text: #4c4b4b;
 $orange: #ef6c00;
 $orange-hover: #fc831f;
 $error-red: #f44437;
 $blue: #283593;
 
-html {
-  font-size: 62.5%; /* 62.5% of 16px = 10px */
+$main-font: "Source Sans Pro", sans-serif;
+$secondary-font: "Overpass", sans-serif;
+
+// mixins
+@mixin mobile {
+  @media (max-width: 768px) {
+    @content;
+  }
+}
+@mixin tablet {
+  @media (max-width: 1024px) {
+    @content;
+  }
+}
+@mixin desktop {
+  @media (max-width: 1170px) {
+    @content;
+  }
 }
 
-.MuiDrawer-paper {
-  width: 50%;
-}
+// overrides
+
 .MuiButton-root {
   text-transform: capitalize;
   font-family: "Source Sans Pro", sans-serif;
@@ -20,9 +44,17 @@ html {
   width: 290px;
   padding: 0;
 }
-
-/* .MuiTypography-body1 {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  overflow: hidden;
-} */
+.MuiContainer-root {
+  @include tablet {
+    padding: 0 24px;
+  }
+  @include mobile {
+    padding: 0 15px;
+  }
+}
+.MuiDrawer-paper {
+  width: 50%;
+  @include mobile {
+    width: 75%;
+  }
+}

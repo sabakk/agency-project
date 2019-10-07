@@ -1,8 +1,18 @@
+@import "../../App.scss";
+
 .title {
   width: 80%;
   margin: 14rem auto 0 auto;
   font-family: "Overpass", sans-serif;
   font-size: 4.2rem;
+  @include tablet {
+    margin: 12rem auto 0 auto;
+  }
+  @include mobile {
+    margin: 7rem auto 0 auto;
+    font-size: 2.6rem;
+    width: 100%;
+  }
 }
 .title_white {
   color: white;
@@ -10,4 +20,12 @@
   margin: 14rem auto 0 auto;
   font-family: "Overpass", sans-serif;
   font-size: 4.2rem;
+  @include tablet {
+    margin: 12rem auto 0 auto;
+  }
+  @include mobile {
+    margin: 7rem auto 0 auto;
+    font-size: 2.6rem;
+    width: 100%;
+  }
 }

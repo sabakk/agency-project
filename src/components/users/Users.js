@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
+import ScrollAnimation from "react-animate-on-scroll";
 import Title from "../HOC/Title";
-
 import { Container, Grid, Button, Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
 import { getUsers } from "../../actions/userAction";
@@ -17,16 +17,26 @@ const Users = () => {
   }, [dispatch, page]);
   return (
     <Container>
-      <Title>Our cheerful users</Title>
-      <Typography variant="h6" align="center" className={styles.header}>
-        Attention! Sorting users by registration date
-      </Typography>
       <Grid
         container
         direction="row"
         justify="space-between"
         alignItems="flex-start"
       >
+        <Grid item xs={12} className={styles.main_title}>
+          <ScrollAnimation animateIn="bounceInRight" animateOut="bounceOutLeft">
+            <Title>Our cheerful users</Title>
+          </ScrollAnimation>
+          <ScrollAnimation
+            delay={700}
+            animateIn="bounceInLeft"
+            animateOut="bounceOutRight"
+          >
+            <Typography variant="h6" align="center" className={styles.header}>
+              Attention! Sorting users by registration date
+            </Typography>
+          </ScrollAnimation>
+        </Grid>
         {users
           ? users.map(user => (
               <Grid
@@ -36,7 +46,9 @@ const Users = () => {
                 key={user.id}
                 className={styles.user_container}
               >
-                <User user={user}></User>
+                <ScrollAnimation animateIn="fadeIn">
+                  <User user={user}></User>
+                </ScrollAnimation>
               </Grid>
             ))
           : "loading"}

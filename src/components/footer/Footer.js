@@ -22,7 +22,7 @@ const scrollToElement = element => {
     duration: 1500,
     delay: 100,
     smooth: true,
-    offset: -60
+    offset: -65
   });
 };
 
@@ -195,7 +195,7 @@ const Footer = () => {
           </div>
         </div>
         <div className={styles.footer_container}>
-          <div className={styles.f_25}>
+          <div className={styles.f_25 + " " + styles.order}>
             <Typography variant="body1" className={styles.caption}>
               © abz.agency specially for the test task
             </Typography>

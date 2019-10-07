@@ -1,15 +1,28 @@
+@import "../../App.scss";
+
 .header {
   font-family: "Source Sans Pro", sans-serif;
   font-size: 1.8rem;
   margin: 1rem 0 6rem 0;
+  @include tablet {
+    margin-bottom: 3rem;
+  }
+  @include mobile {
+    font-size: 1.6rem;
+    margin-bottom: 2.5rem;
+  }
 }
 .user_container {
   min-height: 17rem;
+  overflow: hidden;
 }
 .btn {
-  padding-bottom: 2rem;
+  margin-bottom: 2rem;
   & button {
     display: block;
     margin: auto;
   }
+  // @include mobile {
+  //   margin-bottom: 0;
+  // }
 }

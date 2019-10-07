@@ -1,9 +1,54 @@
+@import "../../App.scss";
+
 .requirements_bg {
-  background: linear-gradient(to right, rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)),
-    url("../../resourses/imgs/bg-2.jpg");
+  background-image: linear-gradient(
+      to right,
+      rgba(0, 0, 0, 0.2),
+      rgba(0, 0, 0, 0.2)
+    ),
+    url("../../resourses/imgs/Optimized-bg-2-desktop.jpg");
   background-position: center;
   background-size: cover;
-  height: 96vh;
+  background-attachment: fixed;
+  padding-bottom: 13.5rem;
+  @include tablet {
+    margin-top: 10rem;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),
+      url("../../resourses/imgs/Optimized-bg-2-tablet.jpg");
+  }
+  @include mobile {
+    margin-top: 7.5rem;
+    padding-bottom: 6.8rem;
+    background-image: linear-gradient(
+        to right,
+        rgba(0, 0, 0, 0.2),
+        rgba(0, 0, 0, 0.2)
+      ),
+      url("../../resourses/imgs/Optimized-bg-2-mobile.jpg");
+  }
+  @media (-webkit-min-device-pixel-ratio: 2) and (min-width: 1025px) {
+    background-image: url("../../resourses/imgs/Optimized-bg-2-desktop-retina.jpg");
+  }
+  @media (-webkit-min-device-pixel-ratio: 2) and (max-width: 1024px) {
+    background-image: url("../../resourses/imgs/Optimized-bg-2-tablet-retina.jpg");
+  }
+  @media (-webkit-min-device-pixel-ratio: 2) and (max-width: 768px) {
+    background-image: url("../../resourses/imgs/Optimized-bg-2-mobile-retina.jpg");
+  }
+}
+.order_img {
+  @include mobile {
+    order: -1;
+  }
+}
+.order_title {
+  @include mobile {
+    order: -3;
+  }
 }
 .requirements_img {
   text-align: center;
@@ -13,6 +58,9 @@
   width: 90%;
   padding-left: 4rem;
   height: auto;
+  @include mobile {
+    padding: 3rem 0 0 0;
+  }
 }
 .body_text {
   font-family: "Source Sans Pro", sans-serif;
@@ -23,5 +71,12 @@
   color: white;
   &:first-child {
     margin-top: 4rem;
+    @include mobile {
+      margin-top: 2rem;
+    }
+  }
+  @include mobile {
+    text-align: center;
+    line-height: 1.4;
   }
 }

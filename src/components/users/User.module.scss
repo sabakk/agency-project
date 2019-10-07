@@ -1,23 +1,45 @@
+@import "../../App.scss";
+
 .container {
   display: flex;
   align-items: flex-start;
+  @include tablet {
+    display: block;
+  }
   .avatar {
     width: 25%;
     align-self: flex-start;
+    @include tablet {
+      width: 100%;
+    }
     & div {
       width: 7rem;
       height: 7rem;
+      @include tablet {
+        margin: 0 auto;
+      }
     }
   }
   .wrapper {
     width: 75%;
     align-self: center;
     padding: 2.5rem 0 5rem 0;
+    @include tablet {
+      width: 100%;
+      text-align: center;
+      padding-bottom: 3rem;
+    }
+    @include mobile {
+      padding: 1.5rem 0 3rem 0;
+    }
     .name {
       margin-bottom: 1rem;
       font-family: "Overpass", sans-serif;
       font-size: 2.2rem;
       line-height: 1;
+      @include mobile {
+        margin-bottom: 0.5rem;
+      }
     }
     .info {
       font-family: "Source Sans Pro", sans-serif;

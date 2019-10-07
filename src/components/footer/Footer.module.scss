@@ -10,14 +10,14 @@
   path {
     fill: #fff !important;
   }
+  @include mobile {
+    margin: 1rem 0 1rem 0;
+  }
+}
+.divider {
+  margin: 2.5rem 0;
 }
 
-// svg path {
-//   fill: #fff !important;
-//   &:hover {
-//     fill: $orange !important;
-//   }
-// }
 .container {
   width: 100%;
   margin: 0 auto;
@@ -25,14 +25,46 @@
   flex-direction: column;
   padding: 3rem 4.7rem;
   color: white;
+  @include tablet {
+    padding: 3rem 2.4rem;
+  }
 }
 .footer_container {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: center;
+  @include mobile {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+  }
 }
+
 .footer_d_none {
-  display: none;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  // flex: 0 0 70%;
+  margin-top: -1.5rem;
+  @include mobile {
+    display: none;
+  }
+  .directions {
+    flex: 0 0 25%;
+    padding-bottom: 0.6rem;
+    font-family: "PT Sans", sans-serif;
+    font-size: 1.6rem;
+    &:hover {
+      color: $orange;
+      cursor: pointer;
+    }
+  }
+}
+.order {
+  @include mobile {
+    order: 3;
+  }
 }
 .f_25 {
   flex: 0 50%;
@@ -40,13 +72,25 @@
   justify-content: flex-end;
   text-align: center;
   margin-top: 0.5rem;
+
   .caption {
     font-family: "Source Sans Pro", sans-serif;
     font-size: 1.2rem;
     margin-right: auto;
+    @include mobile {
+      margin-top: 1rem;
+    }
   }
   .social {
-    margin-left: 2.5rem;
+    margin-left: 2.3rem;
+    &:first-child {
+      @include mobile {
+        margin-left: 0;
+      }
+    }
+    @include mobile {
+      margin-top: 1rem;
+    }
   }
   a:hover path {
     fill: $orange !important;
@@ -55,58 +99,44 @@
 .navigation {
   font-family: "PT Sans", sans-serif;
   font-size: 1.6rem;
+  margin-left: 3rem;
   &:hover {
     color: $orange;
     cursor: pointer;
   }
+  @include mobile {
+    margin-left: 0;
+  }
 }
 
-@media only screen and (min-width: 600px) {
-  .footer_container {
-    flex-direction: row;
-    justify-content: space-between;
-    align-items: center;
-  }
-  .footer_d_none {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    flex: 0 0 70%;
-    margin-top: -1.5rem;
-    .directions {
-      flex: 0 0 25%;
-      padding-bottom: 0.6rem;
-      font-family: "PT Sans", sans-serif;
-      font-size: 1.6rem;
-      &:hover {
-        color: $orange;
-        cursor: pointer;
-      }
+.contacts_wrapper {
+  position: relative;
+  &:hover {
+    color: $orange;
+    cursor: pointer;
+    .icons path,
+    polygon {
+      fill: $orange !important;
     }
   }
-  .divider {
-    margin: 2.5rem 0;
-  }
-  .contacts_wrapper {
-    position: relative;
-    &:hover {
-      color: $orange;
-      cursor: pointer;
-      .icons path {
-        fill: $orange !important;
-      }
-    }
-    .icons {
-      position: absolute;
-      margin-top: 0.8rem;
-    }
-    .contacts {
-      font-family: "Source Sans Pro", sans-serif;
-      font-size: 2rem;
-      margin: 0 0 2rem 3.5rem;
+  .icons {
+    position: absolute;
+    margin-top: 0.8rem;
+    @include tablet {
+      display: none;
     }
   }
-  .navigation {
-    margin-left: 3rem;
+  .contacts {
+    font-family: "Source Sans Pro", sans-serif;
+    font-size: 2rem;
+    margin: 0 0 2rem 3.5rem;
+    @include tablet {
+      margin-left: 0;
+      font-size: 1.8rem;
+    }
+    @include mobile {
+      text-align: center;
+      margin: 0 0 1rem 0;
+    }
   }
 }

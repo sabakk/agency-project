@@ -7,13 +7,15 @@ const User = ({ user: { photo, name, position, email, phone } }) => {
   return (
     <div className={styles.container}>
       <div className={styles.avatar}>
-        <Avatar src={photo} />
+        <Avatar src={photo} alt="avatar" />
       </div>
 
       <div className={styles.wrapper}>
-        <Typography variant="h6" className={styles.name}>
-          {name}
-        </Typography>
+        <Tooltip title={name}>
+          <Typography variant="h6" className={styles.name} noWrap>
+            {name}
+          </Typography>
+        </Tooltip>
         <Typography variant="body1" className={styles.info}>
           {position}
         </Typography>

@@ -1,8 +1,20 @@
 import React from "react";
+import { scroller } from "react-scroll";
+import ScrollAnimation from "react-animate-on-scroll";
+
 import { Grid, Container, Typography, Button } from "@material-ui/core";
 import Title from "../HOC/Title";
 import about from "../../resourses/imgs/man-mobile.svg";
 import styles from "./About.module.scss";
+
+const scrollToElement = element => {
+  scroller.scrollTo(element, {
+    duration: 1500,
+    delay: 100,
+    smooth: true,
+    offset: -65
+  });
+};
 
 const About = () => {
   return (
@@ -14,7 +26,9 @@ const About = () => {
         alignItems="center"
       >
         <Grid item xs={12}>
-          <Title>Let's get acquainted</Title>
+          <ScrollAnimation animateIn="bounceInRight" animateOut="bounceOutLeft">
+            <Title>Let's get acquainted</Title>
+          </ScrollAnimation>
         </Grid>
         <Grid item xs={12} sm={4}>
           <div className={styles.about_img}>
@@ -37,7 +51,14 @@ const About = () => {
               Last week, Google Search and Ads teams announced two new speed
               initiatives to help improve user-experience on the web.
             </Typography>
-            <Button className={styles.button}>Sign Up</Button>
+            <div className={styles.btn_wrapper}>
+              <Button
+                onClick={() => scrollToElement("Sign up")}
+                className={styles.button}
+              >
+                Sign Up
+              </Button>
+            </div>
           </div>
         </Grid>
       </Grid>

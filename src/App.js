@@ -36,15 +36,16 @@ const theme = createMuiTheme({
       main: "#fff"
     }
   },
+  breakpoints: {
+    values: {
+      xs: 320,
+      sm: 768,
+      md: 1024,
+      lg: 1170,
+      xl: 2560
+    }
+  },
   spacing: 12
-
-  // overrides: {
-  //   MuiContainer: {
-  //     root: {
-  //       padding: 20
-  //     }
-  //   }
-  // }
 });
 
 function App() {

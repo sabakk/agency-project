@@ -1,22 +1,62 @@
+@import "../../App.scss";
+
 .inner_grid {
   padding: 5.2rem 0 14rem 0;
-}
-.inner_next_grid {
-  padding-left: 2rem;
-  .body_text {
-    width: 75%;
+  @include tablet {
+    display: flex;
+    align-items: flex-start;
+    margin: 0 6rem;
+    padding-bottom: 0;
+    .img svg {
+      width: 9rem;
+      height: 10rem;
+      margin-right: 3rem;
+      @include mobile {
+        margin-right: 0;
+      }
+    }
+  }
+  @include mobile {
+    flex-direction: column;
+    align-items: center;
+    margin: 0;
+    padding: 3rem 0 0 0;
+  }
+  .wrapper_text {
+    .title_text {
+      font-family: "Overpass", sans-serif;
+      font-weight: bold;
+      font-size: 2.6rem;
+      padding-top: 2rem;
+      @include tablet {
+        padding-top: 0;
+      }
+      @include mobile {
+        font-size: 2.2rem;
+        text-align: center;
+      }
+    }
+    .body_text {
+      font-family: "Source Sans Pro", sans-serif;
+      font-size: 1.6rem;
+      line-height: 1.4;
+      color: black;
+      @include mobile {
+        text-align: center;
+      }
+    }
   }
 }
 
-.title_text {
-  font-family: "Overpass", sans-serif;
-  font-weight: bold;
-  font-size: 2.6rem;
-  padding-top: 2rem;
-}
-.body_text {
-  font-family: "Source Sans Pro", sans-serif;
-  font-size: 1.6rem;
-  line-height: 1.4;
-  color: black;
+.inner_next_grid {
+  padding-left: 2rem;
+  @include tablet {
+    padding-left: 0;
+  }
+  .body_text {
+    width: 75%;
+    @include tablet {
+      width: 100%;
+    }
+  }
 }
