@@ -1,9 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { createTextMask } from "redux-form-input-masks";
-import ScrollAnimation from "react-animate-on-scroll";
 import { useDispatch, useSelector } from "react-redux";
-import { getPositions } from "../../actions/positionsAction";
-import { register } from "../../actions/registerAction";
+import { getPositionInit } from "../../actions/positionsAction";
+import { registerInit } from "../../actions/registerAction";
 
 import Title from "../HOC/Title";
 import { renderTextField, renderSelectField, renderFileField } from "./Inputs";
@@ -25,7 +24,7 @@ const SignUp = props => {
   const dispatch = useDispatch();
   const positions = useSelector(state => state.positions.position);
   useEffect(() => {
-    dispatch(getPositions());
+    dispatch(getPositionInit());
   }, [dispatch]);
 
   const phoneMask = createTextMask({
@@ -50,9 +49,10 @@ const SignUp = props => {
     FormFied.append("position_id", values.position_id);
     FormFied.append("photo", values.photo);
 
-    dispatch(register(FormFied));
+    dispatch(registerInit(FormFied));
     reset();
   };
+
   return (
     <Container>
       <form onSubmit={handleSubmit(submit)}>
@@ -64,26 +64,15 @@ const SignUp = props => {
           spacing={spacing}
         >
           <Grid item xs={12}>
-            <ScrollAnimation
-              animateIn="bounceInRight"
-              animateOut="bounceOutLeft"
+            <Title>Register to get a work</Title>
+            <Typography
+              variant="h6"
+              align="center"
+              className={styles.subheader}
             >
-              <Title>Register to get a work</Title>
-            </ScrollAnimation>
-            <ScrollAnimation
-              delay={700}
-              animateIn="bounceInLeft"
-              animateOut="bounceOutRight"
-            >
-              <Typography
-                variant="h6"
-                align="center"
-                className={styles.subheader}
-              >
-                Attention! After successful registration and alert, update the
-                list of users in the block from the top
-              </Typography>
-            </ScrollAnimation>
+              Attention! After successful registration and alert, update the
+              list of users in the block from the top
+            </Typography>
           </Grid>
 
           <Grid item xs={12} sm={4} className={styles.field}>

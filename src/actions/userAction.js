@@ -1,4 +1,3 @@
-import axios from "axios";
 import {
   USER_GET,
   USER_ERROR,
@@ -6,50 +5,42 @@ import {
   USERS_GET,
   USERS_ERROR,
   USERS_LOADING,
+  USERS_CLEAR,
   LOGOUT
 } from "../actions/types";
 
-axios.defaults.baseURL =
-  "https://frontend-test-assignment-api.abz.agency/api/v1/";
-axios.interceptors.response.use(res => res.data);
+export const getUserInit = () => ({
+  type: USER_LOADING
+});
 
-export const getUser = () => async dispatch => {
-  dispatch({
-    type: USER_LOADING
-  });
-  try {
-    const res = await axios.get("users/1");
+export const getUserSuccess = res => ({
+  type: USER_GET,
+  payload: res
+});
 
-    dispatch({
-      type: USER_GET,
-      payload: res
-    });
-  } catch (err) {
-    dispatch({
-      type: USER_ERROR,
-      payload: err.response
-    });
-  }
-};
+export const getUserError = error => ({
+  type: USER_ERROR,
+  payload: error
+});
 
-export const getUsers = page => async dispatch => {
-  dispatch({
-    type: USERS_LOADING
-  });
-  try {
-    const res = await axios.get(`users?page=${page}&count=6`);
-    dispatch({
-      type: USERS_GET,
-      payload: res
-    });
-  } catch (err) {
-    dispatch({
-      type: USERS_ERROR,
-      payload: err
-    });
-  }
-};
+export const getUsersInit = (page, mediaMatch) => ({
+  type: USERS_LOADING,
+  page,
+  mediaMatch
+});
 
-export const logout = () => dispatch => {
-  dispatch({ type: LOGOUT });
-};
+export const getUsersSuccess = res => ({
+  type: USERS_GET,
+  payload: res
+});
+
+export const getUsersError = error => ({
+  type: USERS_ERROR,
+  payload: error
+});
+
+export const usersClear = () => ({
+  type: USERS_CLEAR
+});
+
+export const logout = () => ({ type: LOGOUT });

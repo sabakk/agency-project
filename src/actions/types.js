@@ -14,9 +14,9 @@ export const TOKEN_GET = "TOKEN_GET";
 export const TOKEN_ERROR = "TOKEN_ERROR";
 export const TOKEN_LOADING = "TOKEN_LOADING";
 
-export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
-export const REGISTER_FAIL = "REGISTER_FAIL";
-export const REGISTER_LOADING = "REGISTER_LOADING";
+// export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
+// export const REGISTER_FAIL = "REGISTER_FAIL";
+export const REGISTER_INIT = "REGISTER_INIT";
 
 export const SET_ALERT = "SET_ALERT";
 export const REMOVE_ALERT = "REMOVE_ALERT";

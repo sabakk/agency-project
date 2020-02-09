@@ -1,5 +1,4 @@
 import React from "react";
-import ScrollAnimation from "react-animate-on-scroll";
 import { Grid, Container, Typography, Hidden } from "@material-ui/core";
 import Title from "../HOC/Title";
 
@@ -14,18 +13,13 @@ const Relationships = () => {
       <Grid container direction="row" justify="center" alignItems="center">
         <Grid item xs={12}>
           <Grid item xs={12} className={styles.main_title}>
-            <ScrollAnimation
-              animateIn="bounceInRight"
-              animateOut="bounceOutLeft"
-            >
-              <Title>
-                About my relationships with{" "}
-                <Hidden xsDown>
-                  <br />
-                </Hidden>{" "}
-                web-development
-              </Title>
-            </ScrollAnimation>
+            <Title>
+              About my relationships with{" "}
+              <Hidden xsDown>
+                <br />
+              </Hidden>{" "}
+              web-development
+            </Title>
           </Grid>
         </Grid>
 

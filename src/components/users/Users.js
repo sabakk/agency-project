@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
-import ScrollAnimation from "react-animate-on-scroll";
 import Title from "../HOC/Title";
 import { Container, Grid, Button, Typography } from "@material-ui/core";
 import { useDispatch, useSelector } from "react-redux";
-import { getUsers } from "../../actions/userAction";
+import { getUsersInit } from "../../actions/userAction";
 import { getSortUsers } from "../../selectors/getSortUsers";
 import User from "./User";
 import styles from "./Users.module.scss";
@@ -12,9 +11,12 @@ const Users = () => {
   const dispatch = useDispatch();
   const users = useSelector(getSortUsers);
   const [page, setPage] = useState(1);
+
   useEffect(() => {
-    dispatch(getUsers(page));
+    let mediaMatch = window.matchMedia("(max-width: 768px)").matches ? 3 : 6;
+    dispatch(getUsersInit(page, mediaMatch));
   }, [dispatch, page]);
+
   return (
     <Container>
       <Grid
@@ -24,18 +26,11 @@ const Users = () => {
         alignItems="flex-start"
       >
         <Grid item xs={12} className={styles.main_title}>
-          <ScrollAnimation animateIn="bounceInRight" animateOut="bounceOutLeft">
-            <Title>Our cheerful users</Title>
-          </ScrollAnimation>
-          <ScrollAnimation
-            delay={700}
-            animateIn="bounceInLeft"
-            animateOut="bounceOutRight"
-          >
-            <Typography variant="h6" align="center" className={styles.header}>
-              Attention! Sorting users by registration date
-            </Typography>
-          </ScrollAnimation>
+          <Title>Our cheerful users</Title>
+
+          <Typography variant="h6" align="center" className={styles.header}>
+            Attention! Sorting users by registration date
+          </Typography>
         </Grid>
         {users
           ? users.map(user => (
@@ -46,9 +41,7 @@ const Users = () => {
                 key={user.id}
                 className={styles.user_container}
               >
-                <ScrollAnimation animateIn="fadeIn">
-                  <User user={user}></User>
-                </ScrollAnimation>
+                <User user={user}></User>
               </Grid>
             ))
           : "loading"}

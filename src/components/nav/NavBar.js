@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
 import { scroller, Link } from "react-scroll";
 import { useDispatch } from "react-redux";
-import { getUser } from "../../actions/userAction";
-import { getToken } from "../../actions/tokenAction";
+import { getUserInit } from "../../actions/userAction";
+import { getTokenInit } from "../../actions/tokenAction";
 
 import AppBar from "@material-ui/core/AppBar";
 import Toolbar from "@material-ui/core/Toolbar";
@@ -19,8 +19,8 @@ import styles from "./NavBar.module.scss";
 const NavBar = props => {
   const dispatch = useDispatch();
   useEffect(() => {
-    dispatch(getUser());
-    dispatch(getToken());
+    dispatch(getUserInit());
+    dispatch(getTokenInit());
   }, [dispatch]);
 
   const [state, setState] = React.useState({

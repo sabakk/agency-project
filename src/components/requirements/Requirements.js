@@ -1,5 +1,4 @@
 import React from "react";
-import ScrollAnimation from "react-animate-on-scroll";
 import { Grid, Container, Typography } from "@material-ui/core";
 import Title from "../HOC/Title";
 
@@ -17,12 +16,7 @@ const Requirements = () => {
           alignItems="center"
         >
           <Grid item xs={12} className={styles.order_title}>
-            <ScrollAnimation
-              animateIn="bounceInRight"
-              animateOut="bounceOutLeft"
-            >
-              <Title white>General requirements for the test task</Title>
-            </ScrollAnimation>
+            <Title white>General requirements for the test task</Title>
           </Grid>
           <Grid item xs={12} sm={6}>
             <Typography variant="body1" className={styles.body_text}>

@@ -1,6 +1,5 @@
 import React from "react";
 import { scroller } from "react-scroll";
-import ScrollAnimation from "react-animate-on-scroll";
 
 import { Grid, Container, Typography, Button } from "@material-ui/core";
 import Title from "../HOC/Title";
@@ -26,9 +25,7 @@ const About = () => {
         alignItems="center"
       >
         <Grid item xs={12}>
-          <ScrollAnimation animateIn="bounceInRight" animateOut="bounceOutLeft">
-            <Title>Let's get acquainted</Title>
-          </ScrollAnimation>
+          <Title>Let's get acquainted</Title>
         </Grid>
         <Grid item xs={12} sm={4}>
           <div className={styles.about_img}>
